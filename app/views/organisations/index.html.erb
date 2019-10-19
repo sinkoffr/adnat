@@ -1,0 +1,27 @@
+<div class="right-align">
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+</div>
+<h1 class="center">Adnat Time App</h1>
+<div class="box">
+  <p class="center">Signed in as <%= current_user.name %></p>
+
+  <% if !current_user.organisations %>
+    <p>To get started you need to join or create an Organisation</p>
+
+  <%else %>
+    <h3 class="blue center">Organisations</h3>
+    <ul>
+      <% @organisations.each do |item| %>
+        <li><%= item.name %>  <a href="#">Edit</a>  <a href="#"> Join</a></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h3 class="blue center">Create an Organisation</h3>
+
+  <%= simple_form_for @organisation do |f| %>
+    <%= f.input :name %>
+    <%= f.input :hourly_rate %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
