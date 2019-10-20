@@ -1,0 +1,14 @@
+<div class="box">
+  <div class="center">
+    <h3 class="blue">Edit <%= @organisation.name %></h3>
+    <%= simple_form_for @organisation do |f| %>
+      <br />
+      <%= f.input :name, label: 'Name: ', label_html: { class: 'field' } %>
+      <br />
+      <%= f.input :hourly_rate, label: 'Hourly Rate: ', label_html: { class: 'field' }  %>
+      <br />
+      <%= f.submit 'Update', class: 'field', style: 'margin-bottom: 15px;' %>
+      <%= link_to 'Cancel', root_path, class: 'box' %>
+    <% end %>
+  </div>
+</div>

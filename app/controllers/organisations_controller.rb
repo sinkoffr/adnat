@@ -1,5 +1,5 @@
 class OrganisationsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!
 
   def index
     @organisations = Organisation.all
@@ -12,6 +12,16 @@ class OrganisationsController < ApplicationController
 
   def create
     @organisation = current_user.organisations.create(organisation_params)
+  end
+
+  def edit
+    @organisation = Organisation.find(params[:id])
+  end
+
+  def update
+    @organisation = Organisation.find(params[:id])
+    @organisation.update(organisation_params)
+    redirect_to root_path
   end
 
   private

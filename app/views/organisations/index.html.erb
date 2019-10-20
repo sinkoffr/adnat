@@ -1,7 +1,3 @@
-<div class="right-align">
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-</div>
-<h1 class="center">Adnat Time App</h1>
 <div class="box">
   <p class="center">Signed in as <%= current_user.name %></p>
 
@@ -10,18 +6,19 @@
 
   <%else %>
     <h3 class="blue center">Organisations</h3>
-    <ul>
+    <ul class="left-align">
       <% @organisations.each do |item| %>
-        <li><%= item.name %>  <a href="#">Edit</a>  <a href="#"> Join</a></li>
+        <li><%= item.name %>  <%= link_to 'Edit', edit_organisation_path(item) %>  <a href="#"> Join</a></li>
       <% end %>
     </ul>
   <% end %>
 
   <h3 class="blue center">Create an Organisation</h3>
-
-  <%= simple_form_for @organisation do |f| %>
-    <%= f.input :name %>
-    <%= f.input :hourly_rate %>
-    <%= f.button :submit %>
-  <% end %>
+  <div class="left-align field">
+    <%= simple_form_for @organisation do |f| %>
+      <%= f.input :name, label: 'Name:', label_html: { class: 'form_field field' } %>
+      <%= f.input :hourly_rate, label: 'Hourly Rate:', label_html: { class: 'form_field field' } %>
+      <%= f.button :submit, class: 'field blue', style: 'margin-bottom: 15px;' %>
+    <% end %>
+  </div>
 </div>

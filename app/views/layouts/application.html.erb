@@ -11,6 +11,12 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <h1 class="center"><%= link_to 'Adnat Time App', root_path, class: 'clean blue' %></h1>
+    <div class="right-align">
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    </div>
+    
+
     <%= yield %>
   </body>
 </html>
