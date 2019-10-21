@@ -6,12 +6,15 @@ class OrganisationsController < ApplicationController
     @organisation = Organisation.new
   end
 
+  def show
+    @organisation = Organisation.find(params[:id])
+  end
   def new
 
   end
 
   def create
-    @organisation = current_user.organisations.create(organisation_params)
+    @organisation = Organisation.create(organisation_params)
   end
 
   def edit
@@ -20,13 +23,24 @@ class OrganisationsController < ApplicationController
 
   def update
     @organisation = Organisation.find(params[:id])
-    @organisation.update(organisation_params)
-    redirect_to root_path
+
+    if current_user.present
+      @organisation.update(organisation_params)
+      redirect_to root_path
+    else
+      @current_organisation.update(organisation_params)
+      redirect_to user_path
+    end
+
   end
 
   private
   def organisation_params
-    params.require(:organisation).permit(:name, :hourly_rate)
+    params.require(:organisation).permit(:name, :hourly_rate, :user_id)
+  end
+
+  def current_organisation
+    @current_organisation ||= Organisation.find(params[:id])
   end
 
 end

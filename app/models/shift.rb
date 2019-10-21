@@ -1,4 +1,3 @@
 class Shift < ApplicationRecord
-  belongs_to :users
-  belongs_to :organisations
+  belongs_to :organisation_enrollments
 end
