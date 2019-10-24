@@ -1,24 +1,30 @@
-<h3> View showing shifts for a given account </h3>
-
-<table style="width:80%" class="center">
-  <tr>
-    <th>Employee Name</th>
-    <th>Shift Date</th>
-    <th>Start Time</th>
-    <th>Finish Time</th>
-    <th>Break Length (minutes)</th>
-    <th>Hours Worked</th>
-    <th>Shift Cost</th>
-  </tr>
-  <%= @shifts.each do |shift| %>
+<% if @shifts.present? %>
+  <table style="width:80%" class="center">
     <tr>
-      <td><%= shift.user.name %></td>
-      <td><%= shift.user.name %></td>
-      <td><%= shift.user.name %></td>
-      <td><%= shift.user.name %></td>
-      <td><%= shift.user.name %></td>
-      <td><%= shift.user.name %></td>
-      <td><%= shift.user.name %></td>
+      <th>Employee Name</th>
+      <th>Shift Date</th>
+      <th>Start Time</th>
+      <th>Finish Time</th>
+      <th>Break Length (minutes)</th>
+      <th>Hours Worked</th>
+      <th>Shift Cost</th>
+      <th>Edit Shift</th>
     </tr>
-  <% end %>
-</table>
+    <%= @shifts.each do |shift| %>
+      <tr>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.user.name %></td>
+        <td><%= shift.user.name %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <div class="box center">
+    <h3 class="blue center">There are no shifts for this organisation yet.</h3>
+    <%= link_to 'Add a shift', new_organisation_organisation_shift_path(params[:organisation_id]), class: 'border' %>
+  </div>
+<% end %>

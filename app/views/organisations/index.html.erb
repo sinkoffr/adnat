@@ -9,7 +9,7 @@
       <li><%= item.name %>
         <%= link_to 'Edit', edit_organisation_path(item) %>
         <% if current_user.joined_organisation?(item) %>
-          <p>You are a member of this organisation</p>
+          <%= link_to 'View', organisation_path(item) %>
         <% else %>
           <%= link_to 'Join', organisation_organisation_enrollments_path(item), method: :post %>
         <% end %>

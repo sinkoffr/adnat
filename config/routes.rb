@@ -3,8 +3,13 @@ Rails.application.routes.draw do
 
   root 'organisations#index'
   resources :organisations do
+
     resources :organisation_enrollments, only: :create
-    resources :shifts, only: [:update, :index]
+
+    namespace :organisation do
+      resources :shifts, only: [:new, :create, :index]
+    end
+
   end
 
   resources :users

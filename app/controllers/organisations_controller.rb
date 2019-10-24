@@ -9,8 +9,8 @@ class OrganisationsController < ApplicationController
   def show
     @organisation = Organisation.find(params[:id])
   end
-  def new
 
+  def new
   end
 
   def create
