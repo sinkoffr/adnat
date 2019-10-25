@@ -1,8 +1,13 @@
 class Shift < ApplicationRecord
-  belongs_to :organisation_enrollments
   has_one :organisation
 
-  def start_time
-    
+  def hours_worked
+
+  end
+
+  def shift_length
+    start = Time.new(self.start)
+    finish = Time.new(self.finish)
+    return finish - start
   end
 end

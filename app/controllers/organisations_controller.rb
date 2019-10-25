@@ -1,5 +1,6 @@
 class OrganisationsController < ApplicationController
   before_action :authenticate_user!
+  before_action :current_organisation, only: [:show, :edit, :update]
 
   def index
     @organisations = Organisation.all
@@ -18,14 +19,13 @@ class OrganisationsController < ApplicationController
   end
 
   def edit
-    @organisation = Organisation.find(params[:id])
+
   end
 
   def update
-    @organisation = Organisation.find(params[:id])
 
     if current_user.present
-      @organisation.update(organisation_params)
+      @current_organisation.update(organisation_params)
       redirect_to root_path
     else
       @current_organisation.update(organisation_params)
