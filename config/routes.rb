@@ -3,8 +3,7 @@ Rails.application.routes.draw do
 
   root 'organisations#index'
   resources :organisations do
-
-    resources :organisation_enrollments, only: :create
+    resources :organisation_enrollments, only: [:create, :destroy]
     resources :shifts, only: [:new, :create, :index]
 
   end

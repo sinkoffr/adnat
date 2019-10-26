@@ -8,7 +8,7 @@ class OrganisationsController < ApplicationController
   end
 
   def show
-    @organisation = Organisation.find(params[:id])
+    @current_organisation
   end
 
   def new
@@ -16,15 +16,15 @@ class OrganisationsController < ApplicationController
 
   def create
     @organisation = Organisation.create(organisation_params)
+    redirect_to root_path
   end
 
   def edit
-
+    @organisation = @current_organisation
   end
 
   def update
-
-    if current_user.present
+    if current_user.present?
       @current_organisation.update(organisation_params)
       redirect_to root_path
     else
@@ -40,7 +40,7 @@ class OrganisationsController < ApplicationController
   end
 
   def current_organisation
-    @current_organisation ||= Organisation.find(params[:id])
+    @current_organisation = Organisation.find(params[:id])
   end
 
 end

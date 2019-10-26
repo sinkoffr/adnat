@@ -1,6 +1,6 @@
 <% if @shifts.present? %>
-  <table style="width:80%" class="center">
-    <tr>
+  <table style="width:80%" class="center left-align">
+    <tr class="border">
       <th>Employee Name</th>
       <th>Shift Date</th>
       <th>Start Time</th>
@@ -10,21 +10,25 @@
       <th>Shift Cost</th>
       <th>Edit Shift</th>
     </tr>
-    <%= @shifts.each do |shift| %>
-      <tr>
-        <td><%= shift.start %></td>
+    <% @shifts.each do |shift| %>
+      <tr class="border">
+        <td><%= shift.organisation.organisation_enrollments.where(user_id: current_user.id).last.user.name %></td>
         <td><%= shift.start.strftime("%m/%d/%Y") %></td>
         <td><%= shift.start.strftime("%I:%M %p") %></td>
         <td><%= shift.finish.strftime("%I:%M %p") %></td>
-        <td><%= shift.shift_length %></td>
+        <td><%= shift.break_length %></td>
         <td><%= shift.hours_worked %></td>
-        <td><%= shift.start %></td>
+        <td><%= number_to_currency shift.cost %></td>
+        <td><%= link_to 'Edit Shift', class: 'border' %>
       </tr>
     <% end %>
   </table>
 <% else %>
   <div class="box center">
     <h3 class="blue center">There are no shifts for this organisation yet.</h3>
-    <%= link_to 'Add a shift', new_organisation_shift_path(params[:organisation_id]), class: 'border' %>
   </div>
 <% end %>
+<div class="center">
+  <br />
+  <%= link_to 'Add a shift', new_organisation_shift_path(params[:organisation_id]), class: 'border' %>
+</div>

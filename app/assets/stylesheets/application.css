@@ -30,12 +30,12 @@
 .left-align {
   text-align: left;
   line-height: 2;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
 .right-align {
   text-align: right;
-  margin-right: 15%;
+  margin-right: 10%;
 }
 
 .field {
@@ -61,4 +61,10 @@
   background-color: lightgrey;
   border-radius: 3px;
   padding: 5px;
+}
+
+.button {
+  color: black;
+  text-decoration: none;
+  margin-bottom: 15px;
 }

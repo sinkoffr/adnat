@@ -1,6 +1,6 @@
 class ShiftsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_organisation
+  before_action :current_organisation, only: [:index, :create]
 
   def index
     @shifts = @current_organisation.shifts
@@ -16,15 +16,12 @@ class ShiftsController < ApplicationController
 
   def create
     @current_organisation.shifts.create(shift_params)
-    #   :start => ,
-    #   :finish => ,
-    #   :break_length => ,
-    # )
+    redirect_to root_path
   end
 
   private
   def shift_params
-    params.require(:shift).permit(:start, :finish, :break_length, :organisation_id)
+    params.require(:shift).permit(:start, :finish, :break_length, :organisation_enrollment_id)
   end
 
   def current_organisation

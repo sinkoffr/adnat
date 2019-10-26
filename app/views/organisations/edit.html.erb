@@ -7,8 +7,9 @@
       <br />
       <%= f.input :hourly_rate, label: 'Hourly Rate: ', label_html: { class: 'field' }  %>
       <br />
-      <%= f.submit 'Update', class: 'field', style: 'margin-bottom: 15px;' %>
-      <%= link_to 'Cancel', root_path, class: 'border', style: 'color: black; text-decoration: none;' %>
+      <%= link_to 'Update', organisation_path(@organisation), class: 'field', class: 'button border' %>
+      <%= link_to 'Cancel', root_path, class: 'button border' %>
+      <br /><br />
     <% end %>
   </div>
 </div>

@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :organisation_enrollments
-  # has_many :joined_organisations, through: :organisation_enrollments, source: :organisation
+  has_many :organisations, :through => :organisation_enrollments
+  has_many :shifts, :through => :organisation_enrollments
 
   def joined_organisation?(organisation)
     joined_organisations = organisation_enrollments.collect(&:organisation)
