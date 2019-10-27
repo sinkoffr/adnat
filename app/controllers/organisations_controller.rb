@@ -1,6 +1,5 @@
 class OrganisationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_organisation, only: [:show, :edit, :update]
 
   def index
     @organisations = Organisation.all
@@ -8,28 +7,28 @@ class OrganisationsController < ApplicationController
   end
 
   def show
-    @current_organisation
+    @organisation = Organisation.find(params[:id])
   end
-
   def new
+
   end
 
   def create
     @organisation = Organisation.create(organisation_params)
-    redirect_to root_path
   end
 
   def edit
-    @organisation = @current_organisation
+    @organisation = Organisation.find(params[:id])
   end
 
   def update
-    @organisation = @current_organisation
-    if current_user.present?
+    @organisation = Organisation.find(params[:id])
+
+    if current_user.present
       @organisation.update(organisation_params)
       redirect_to root_path
     else
-      @organisation.update(organisation_params)
+      @current_organisation.update(organisation_params)
       redirect_to user_path
     end
 
@@ -41,7 +40,7 @@ class OrganisationsController < ApplicationController
   end
 
   def current_organisation
-    @current_organisation = Organisation.find(params[:id])
+    @current_organisation ||= Organisation.find(params[:id])
   end
 
 end

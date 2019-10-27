@@ -1,15 +1,1 @@
-<div class="center box">
-  <h2>Profile for <%= current_user.name %></h2>
-  <p>email: <%= current_user.email %></p>
-  <%= link_to 'Edit User Information', edit_user_registration_path %>
-  <% @user.organisations.each do |organisation| %>
-    <p><strong>Organisations Joined: </strong><%= organisation.name %></p>
-    <% if organisation.shifts.length %>
-      <% organisation.shifts.each do |shift| %>
-        <p style="margin-left: 25px;"><span class="blue">Shift:</span>
-          <%= shift.start.strftime("%m/%d/%Y") %>: <%= shift.hours_worked %> hours
-        </p>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
+<h2>Test page</h2>

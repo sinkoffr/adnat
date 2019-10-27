@@ -5,12 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :organisation_enrollments
-  has_many :organisations, :through => :organisation_enrollments
-  has_many :shifts
+  has_many :joined_organisations, through: :organisation_enrollments, source: :organisation
 
   def joined_organisation?(organisation)
     joined_organisations = organisation_enrollments.collect(&:organisation)
     return joined_organisations.include?(organisation)
   end
-  
 end
