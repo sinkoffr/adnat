@@ -1,17 +1,18 @@
 class OrganisationEnrollmentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :current_organisation
 
   def create
-    @enrollments = current_user.organisation_enrollments.create(enrollment_params)
+    @enrollments = OrganisationEnrollment.create(
+      user_id: current_user.id,
+      organisation_id: @current_organisation.id
+    )
     redirect_to organisation_path(current_organisation)
   end
 
   def destroy
     @organisation_enrollment = OrganisationEnrollment.find(params[:id])
-    user = current_user.id
-
-# Delete shifts for this organisation AND user
-    @organisation_enrollment.user.shifts.destroy_all
+    @organisation_enrollment.organisation.shifts.destroy_all
     @organisation_enrollment.destroy
     redirect_to root_path
   end

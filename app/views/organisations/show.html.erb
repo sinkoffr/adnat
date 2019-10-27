@@ -3,7 +3,7 @@
   <div class="center" style="margin: 10px;">
     <%= link_to 'View Shifts', organisation_shifts_path(@current_organisation), class: 'border' %>
     <%= link_to 'Edit', edit_organisation_path(@current_organisation), class: 'border' %>
-    <%# <%= link_to 'Leave Organisation', organisation_organisation_enrollment_path(@current_organisation, @current_organisation.organisation_enrollments.ids), class: 'border', method: :delete, data: {confirm: 'Are you sure you want to leave this organisation?'} %> %>
+    <%= link_to 'Leave Organisation', organisation_organisation_enrollment_path(@current_organisation, @current_organisation.organisation_enrollments.ids), class: 'border', method: :delete, data: {confirm: 'Are you sure you want to leave this organisation?'} %>
   </div>
 
 

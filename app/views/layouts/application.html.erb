@@ -13,10 +13,14 @@
     <p class="alert"><%= alert %></p>
     <h1 class="center"><%= link_to 'Adnat Time App', root_path, class: 'clean blue' %></h1>
     <div class="right-align">
+      <%= link_to 'My Profile', user_path(current_user), style: "margin-right: 15px;"%>
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
     </div>
     <br />
 
     <%= yield %>
+    <div class="left-align">
+      <%= link_to "Back", :back %>
+    </div>
   </body>
 </html>

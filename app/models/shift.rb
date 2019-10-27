@@ -1,7 +1,7 @@
 class Shift < ApplicationRecord
   belongs_to :organisation
   has_one :organisation_enrollment, :through => :organisation
-  has_one :user, :through => :organisation_enrollments
+  belongs_to :user
 
   'require date'
 
