@@ -19,7 +19,7 @@
         <td><%= shift.break_length %></td>
         <td><%= shift.hours_worked %></td>
         <td><%= number_to_currency shift.cost %></td>
-        <td><%= link_to 'Edit Shift', class: 'border' %>
+        <td><%= link_to 'Edit Shift', edit_organisation_shift_path(shift.organisation.id, shift.id), class: 'border' %>
       </tr>
     <% end %>
   </table>

@@ -2,13 +2,18 @@ class Shift < ApplicationRecord
   belongs_to :organisation
   has_one :organisation_enrollment, :through => :organisation
   belongs_to :user
+  validates :user_id, presence: true
 
   'require date'
 
   def hours_worked
-    break_hours = self.break_length / 60
-    shift_length = self.shift_length
-    return (shift_length - break_hours).to_f
+    if self.break_length
+      break_hours = self.break_length / 60
+    else
+      break_hours = 0
+    end
+      shift_length = self.shift_length
+      return (shift_length - break_hours).to_f
   end
 
   def shift_length

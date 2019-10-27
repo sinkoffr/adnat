@@ -6,8 +6,8 @@
     <p><strong>Organisations Joined: </strong><%= organisation.name %></p>
     <% if organisation.shifts.length %>
       <% organisation.shifts.each do |shift| %>
-        <p style="margin-left: 25px;">
-          <%= shift.start.strftime("%m/%d/%Y") %>: <%= shift.hours_worked %>
+        <p style="margin-left: 25px;"><span class="blue">Shift:</span>
+          <%= shift.start.strftime("%m/%d/%Y") %>: <%= shift.hours_worked %> hours
         </p>
       <% end %>
     <% end %>

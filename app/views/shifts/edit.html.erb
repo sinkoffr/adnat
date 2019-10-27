@@ -1,0 +1,12 @@
+<div class="box center">
+  <h3 class="blue">Edit Shift</h3>
+  <div class="left-align field">
+    <%= simple_form_for @shift, url: organisation_shift_path(params[:organisation_id]) do |f| %>
+      <%= f.input :start, as: :datetime, label: 'Start Time:', label_html: { class: 'form_field field' } %>
+      <%= f.input :finish, as: :datetime, label: 'Time Finished:', label_html: { class: 'form_field field' } %>
+      <%= f.input :break_length, as: :integer, label: 'Break Length:', label_html: { class: 'form_field field'} %>
+      <%= f.button :submit, method: :put, class: 'field blue', style: 'margin-bottom: 15px;' %>
+      <%= link_to 'Delete Shift', organisation_shift_path(params[:organisation_id]), :method => :delete, :confirm => 'Are you sure you want to delete this shift?', class: 'button border', style: 'margin-bottom: 15px; margin-left: 50px;' %>
+    <% end %>
+  </div>
+</div>

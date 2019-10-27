@@ -6,10 +6,11 @@ class User < ApplicationRecord
 
   has_many :organisation_enrollments
   has_many :organisations, :through => :organisation_enrollments
-  has_many :shifts, :through => :organisation_enrollments
+  has_many :shifts
 
   def joined_organisation?(organisation)
     joined_organisations = organisation_enrollments.collect(&:organisation)
     return joined_organisations.include?(organisation)
   end
+  
 end

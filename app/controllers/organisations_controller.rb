@@ -24,11 +24,12 @@ class OrganisationsController < ApplicationController
   end
 
   def update
+    @organisation = @current_organisation
     if current_user.present?
-      @current_organisation.update(organisation_params)
+      @organisation.update(organisation_params)
       redirect_to root_path
     else
-      @current_organisation.update(organisation_params)
+      @organisation.update(organisation_params)
       redirect_to user_path
     end
 
