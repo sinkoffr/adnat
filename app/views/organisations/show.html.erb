@@ -1,9 +1,9 @@
 <div  class="box">
-  <h3 class="center blue"><%= @organisation.name %></h3>
+  <h3 class="center blue"><%= @current_organisation.name %></h3>
   <div class="center" style="margin: 10px;">
-    <%= link_to 'View Shifts', organisation_shifts_path(@organisation), class: 'border' %>
-    <%= link_to 'Edit', edit_organisation_path(@organisation), class: 'border' %>
-    <%= link_to 'Leave Organisation', organisation_organisation_enrollments_path(@organisation), class: 'border', method: :destroy %>
+    <%= link_to 'View Shifts', organisation_shifts_path(@current_organisation), class: 'border' %>
+    <%= link_to 'Edit', edit_organisation_path(@current_organisation), class: 'border' %>
+    <%= link_to 'Leave Organisation', organisation_organisation_enrollment_path(@current_organisation, @current_organisation.organisation_enrollments.ids), class: 'border', method: :delete, data: {confirm: 'Are you sure you want to leave this organisation?'} %>
   </div>
 
 
